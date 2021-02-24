@@ -63,6 +63,7 @@ public class ThirdPersonMovement : MonoBehaviour
         moving = false;
         #endregion
 
+        //ground check
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         //fall damage check
