@@ -12,6 +12,10 @@ public class ThirdPersonMovement : MonoBehaviour
     private float speed;
     public float walkSpeed = 6f;
     public float runSpeed = 12f;
+    public float stamina = 100;
+    public float currentStamina;
+    private bool healStamina = true;
+    public float staminaHealSpeed = 1;
 
     public float gravity = -9.81f;
     public float yVelocityReset = -2f;
@@ -54,6 +58,8 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         //reset all animations to false
         #region
         anim.SetBool("IsWalking", false);
@@ -120,16 +126,22 @@ public class ThirdPersonMovement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
+        //set heal stamina true
+        healStamina = true;
+
         //change speed (and animation!) based on if the player is pressing down sprint key
         if (horizontal > 0.01f || horizontal < -0.1f || vertical > 0.01f || vertical < -0.1f && isGrounded)
         {
             moving = true;
-            if (Input.GetButton("Sprint"))
+            //sprint if you have stamina and press sprint
+            if (Input.GetButton("Sprint") && currentStamina > 0)
             {
                 speed = runSpeed;
                 bool running = true;
                 anim.SetBool("IsRunning", running);
+                healStamina = false;    //don't heal stamina whilest running    //this gets reset to true every loop of the update function
             }
+            //if you don't have stamina or aren't pressing sprint, just walk
             else
             {
                 speed = walkSpeed;
@@ -137,6 +149,13 @@ public class ThirdPersonMovement : MonoBehaviour
                 anim.SetBool("IsWalking", walking);
             }
         }
+
+        if (healStamina == true && currentStamina < stamina)
+        {
+            currentStamina += staminaHealSpeed * Time.deltaTime;
+            Debug.Log(currentStamina+'/'+stamina);
+        }
+
 
         //idle
         if (!moving)
