@@ -153,7 +153,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (healStamina == true && currentStamina < stamina)
         {
             currentStamina += staminaHealSpeed * Time.deltaTime;
-            Debug.Log(currentStamina+'/'+stamina);
+            Debug.Log(currentStamina);
         }
 
 
