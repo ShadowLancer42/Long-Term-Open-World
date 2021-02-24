@@ -1,1 +1,0 @@
-the problem with the ground check (i think) is that it's not checking an entire shpere, it's only checking a flat circle that doesn't have width across the y-axis
