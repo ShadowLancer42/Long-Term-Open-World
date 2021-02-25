@@ -21,6 +21,7 @@ public class ThirdPersonMovement : MonoBehaviour
     private bool exausted = false;
     [Space(5)]
     public Color normalStamina;
+    public Color normalEmpty;
     public Color exaustedStamina;
     public Color exaustedEmpty;
     [Space(10)]
