@@ -1,0 +1,9 @@
+so like, this was a not i took but need digital access to
+
+velocity is speed or something
+
+if(velocity>=threshold){
+//take a dmage, plus however many mutliples of unitsPerHeart over
+damage = roundDown((velocity-threshold)/unitsPerHeart) + 1;
+  hearts -= damage;
+}
