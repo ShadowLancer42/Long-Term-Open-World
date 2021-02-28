@@ -19,11 +19,6 @@ public class ThirdPersonMovement : MonoBehaviour
     public float currentStamina;
     private bool healStamina = true;
     private bool exausted = false;
-    [Space(5)]
-    public Color normalStamina;
-    public Color normalEmpty;
-    public Color exaustedStamina;
-    public Color exaustedEmpty;
     [Space(10)]
     public float staminaUseSpeed = 1;
     public float staminaHealSpeed = 3;
