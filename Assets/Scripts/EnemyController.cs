@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+    public int attackDamage = 3;
+
 
     public float lookRadius = 10f;
 
@@ -46,6 +48,12 @@ public class EnemyController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
+    }
+
+    void attackPlayer()
+    {
+        //idk man, just make it call the TakeDamage() func on the ThirdPersonMovement script, im gonna go commit now lol
+
     }
 
 }

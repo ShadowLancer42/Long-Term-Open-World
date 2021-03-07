@@ -257,6 +257,8 @@ public class ThirdPersonMovement : MonoBehaviour
         Debug.Log("you died");
     }
 
+
+
     void TakeDamage(int amount, bool fatal = true)
     {
         currentHealth -= amount;

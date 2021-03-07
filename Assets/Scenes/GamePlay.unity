@@ -947,6 +947,35 @@ Transform:
   m_Father: {fileID: 1770288993}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &841607538 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5739982188229479239, guid: 9ce3c78fc56bd964980e09758f9ee3aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 5739982188169097078}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &841607542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841607538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca250c9dd5f1b1a458633c56ffbcf014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerType: 1
+  targetType: 0
+  triggerCallFunc: 0
+  TriggerObject: {fileID: 0}
+  TriggerTag: Player
+  TargetGameObject: {fileID: 0}
+  Function: die
+  RequireButton: 0
+  ActivationInput: 
+  RepeatForever: 0
+  RepeatCount: 0
 --- !u!1 &865622063
 GameObject:
   m_ObjectHideFlags: 0
@@ -3839,12 +3868,13 @@ PrefabInstance:
     - target: {fileID: 5739982188229479237, guid: 9ce3c78fc56bd964980e09758f9ee3aa,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5739982188229479239, guid: 9ce3c78fc56bd964980e09758f9ee3aa,
         type: 3}
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5739982188229479236, guid: 9ce3c78fc56bd964980e09758f9ee3aa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9ce3c78fc56bd964980e09758f9ee3aa, type: 3}
