@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
-
+    //variables
+    #region
     public GameObject characterModel;
     public CharacterController controller;
     public Transform cam;
@@ -54,6 +55,7 @@ public class ThirdPersonMovement : MonoBehaviour
     float fallDist;
     [Space]
     public bool playerIsControllable = true;
+    #endregion
 
     private void Awake()
     {
