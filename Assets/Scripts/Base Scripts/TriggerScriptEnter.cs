@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerScript : MonoBehaviour
+public class TriggerScriptEnter : MonoBehaviour
 {
     //variables
     #region
@@ -62,7 +62,7 @@ public class TriggerScript : MonoBehaviour
 
     //the actual code DO NOT DELETE THIS PART
     //I SAID DON'T DELETE THIS PART
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         //if the trigger is set to repeat forever, or if the trigger has not been called the desired number of times
         if (RepeatForever == true || RepeatCount >= 0)

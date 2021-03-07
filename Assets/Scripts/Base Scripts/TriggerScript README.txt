@@ -1,3 +1,11 @@
+***Which Script do I use?***
+	
+	# TriggerScriptEnter -> Only calls function the first frame you enter the collider (it uses the OnTriggerEnter func)
+
+	# TriggerScriptStay -> Is called every frame you are within the collider (it uses the OnTriggerStay func)
+
+___________________________________________________________________________________________________________________________
+
 - Type: how should we determine if the object entering the collider should trigger it 
 
  	* Game Object -> is it the exact object set to the variable 'Trigger Object', 
