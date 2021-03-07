@@ -15,7 +15,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [Header("Health & Damage")]
     [Space(20)]
     public int health = 20;
-    [HideInInspector]public int currentHealth = 20;
+    public int currentHealth;
     public float fallDamageThreshold = 30f;
     [SerializeField]private float fallDmgMultiplier = 5;
     [SerializeField]private Slider healthDisplay;
@@ -85,9 +85,11 @@ public class ThirdPersonMovement : MonoBehaviour
         Cursor.visible = false;
         //stamina setup
         staminaDisplay.maxValue = stamina;
+        staminaDisplay.value = stamina;
         currentStamina = stamina;
         //health setup
         healthDisplay.maxValue = health;
+        healthDisplay.value = health;
         currentHealth = health;
 
 
@@ -258,6 +260,7 @@ public class ThirdPersonMovement : MonoBehaviour
     void TakeDamage(int amount, bool fatal = true)
     {
         currentHealth -= amount;
+        healthDisplay.value = currentHealth;
         if (fatal && currentHealth <= 0)
         {
             die();
