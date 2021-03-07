@@ -11,12 +11,26 @@ public class ThirdPersonMovement : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
 
+    [Space(5)]
+    [Header("Health & Damage")]
+    [Space(20)]
+    public int health = 20;
+    public int currentHealth;
+    public float fallDamageThreshold = 30f;
+    [SerializeField]private float fallDmgMultiplier = 5;
+    [SerializeField]private Slider healthDisplay;
+    private float damage;
+
     private float speed;
-    [Space(10)]
+
+    [Space(5)]
+    [Header ("Movement")]
+    [Space(20)]
     public float walkSpeed = 6f;
     public float runSpeed = 12f;
-    [Space(10)]
+
     public float stamina = 100;
+    [HideInInspector]
     public float currentStamina;
     private bool healStamina = true;
     private bool exausted = false;
@@ -25,14 +39,14 @@ public class ThirdPersonMovement : MonoBehaviour
     public float staminaHealSpeed = 3;
     public float exaustedHealSpeed = 2;
     public Slider staminaDisplay;
-    [Space(10)]
 
+    [Space(5)]
+    [Header("Physics")]
     [Space(20)]
     public float gravity = -9.81f;
     public float yVelocityReset = -2f;
     [Space(10)]
     public float jump = 10f;
-    public float killFallDist = 30f;
     [Space(10)]
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -41,6 +55,9 @@ public class ThirdPersonMovement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
 
+    [Space(5)]
+    [Header ("Misc.")]
+    [Space(20)]
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
 
@@ -53,9 +70,11 @@ public class ThirdPersonMovement : MonoBehaviour
     float startFall;
     float endFall;
     float fallDist;
-    [Space]
+
     public bool playerIsControllable = true;
     #endregion
+
+
 
     private void Awake()
     {
@@ -66,7 +85,13 @@ public class ThirdPersonMovement : MonoBehaviour
         Cursor.visible = false;
         //stamina setup
         staminaDisplay.maxValue = stamina;
+        staminaDisplay.value = stamina;
         currentStamina = stamina;
+        //health setup
+        healthDisplay.maxValue = health;
+        healthDisplay.value = health;
+        currentHealth = health;
+
 
     }
 
@@ -104,9 +129,10 @@ public class ThirdPersonMovement : MonoBehaviour
             //fall equation
             fallDist = Mathf.Abs(Mathf.Abs(startFall) - Mathf.Abs(endFall));
             //if the fall distance was enough to kill, kill.
-            if (fallDist > killFallDist)
+            if (fallDist > fallDamageThreshold)
             {
-                die();
+                damage = ((fallDist - fallDamageThreshold) / fallDmgMultiplier) + 1;
+                TakeDamage(Mathf.FloorToInt(damage));
             }
 
         }
@@ -229,6 +255,16 @@ public class ThirdPersonMovement : MonoBehaviour
         anim.SetTrigger("Die");
         playerIsControllable = false;
         Debug.Log("you died");
+    }
+
+    void TakeDamage(int amount, bool fatal = true)
+    {
+        currentHealth -= amount;
+        healthDisplay.value = currentHealth;
+        if (fatal && currentHealth <= 0)
+        {
+            die();
+        }
     }
 
 }
