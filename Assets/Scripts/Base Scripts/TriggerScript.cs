@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerScriptEnter : MonoBehaviour
+public class TriggerScript : MonoBehaviour
 {
     //variables
     #region
+
+    bool doSendMessage = true;
 
     public enum Type
     {
@@ -18,9 +20,18 @@ public class TriggerScriptEnter : MonoBehaviour
     public enum Target
     {
         other = 0,
-        SpecificGameObject = 1
+        SpecificGameObject = 1,
+        self = 3
     }
     public Target targetType = Target.other;    //where should we broadcast the message to? (other -> the object that triggered the collider, SpecificGameObject -> the gameobject 'TargetGameObject')
+
+    public enum Call
+    {
+        OnTriggerEnter = 0,
+        OnTriggerStay = 1,
+        OnTriggerExit = 2
+    }
+    public Call triggerCallFunc = Call.OnTriggerEnter;
 
     //the 2 trigger type variables
     public GameObject TriggerObject;    //Object entering the collider
@@ -54,15 +65,21 @@ public class TriggerScriptEnter : MonoBehaviour
     {
         if (!RequireButton || Input.GetButtonDown(ActivationInput))
         {
-            TargetGameObject.BroadcastMessage(Function);
+            //if the target isn't 'self'
+            if (doSendMessage)
+            {
+                TargetGameObject.BroadcastMessage(Function);
+            }
+            else
+            {
+                Invoke(Function, 0f);
+            }
             RepeatCount -= 1;
         }
+
     }
 
-
-    //the actual code DO NOT DELETE THIS PART
-    //I SAID DON'T DELETE THIS PART
-    private void OnTriggerEnter(Collider other)
+    void run(Collider other)
     {
         //if the trigger is set to repeat forever, or if the trigger has not been called the desired number of times
         if (RepeatForever == true || RepeatCount >= 0)
@@ -72,6 +89,10 @@ public class TriggerScriptEnter : MonoBehaviour
             {
                 case Target.other:
                     TargetGameObject = other.gameObject;
+                    break;
+
+                case Target.self:
+                    doSendMessage = false;
                     break;
             }
 
@@ -97,12 +118,39 @@ public class TriggerScriptEnter : MonoBehaviour
                     sendMyMessage();
                     break;
             }
-            
+
 
         }
     }
-    //DON'T DELETE THIS^^^^
-    //IT'S VERY IMPORTANT THAT YOU DO NOT DELETE THIS CODE UP HERE^^^^
+
+    //does run() based upon which value is set to on the enum Call
+    //ex: it will only ever do run() when the trigger enters the collider if Call is set to OnTriggerEnter
+    #region Call the function
+    private void OnTriggerEnter(Collider other)
+    {
+        if (triggerCallFunc == Call.OnTriggerEnter)
+        {
+            run(other);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (triggerCallFunc == Call.OnTriggerStay)
+        {
+            run(other);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (triggerCallFunc == Call.OnTriggerExit)
+        {
+            run(other);
+        }
+    }
+    #endregion
+    // ^pls don't delete this.
 
     #endregion
 

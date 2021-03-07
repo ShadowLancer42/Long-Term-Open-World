@@ -3767,6 +3767,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 480224308, guid: 9ce3c78fc56bd964980e09758f9ee3aa, type: 3}
+      propertyPath: m_Speed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5739982188229479233, guid: 9ce3c78fc56bd964980e09758f9ee3aa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3820,6 +3824,21 @@ PrefabInstance:
     - target: {fileID: 5739982188229479233, guid: 9ce3c78fc56bd964980e09758f9ee3aa,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739982188229479236, guid: 9ce3c78fc56bd964980e09758f9ee3aa,
+        type: 3}
+      propertyPath: triggerType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739982188229479237, guid: 9ce3c78fc56bd964980e09758f9ee3aa,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5739982188229479237, guid: 9ce3c78fc56bd964980e09758f9ee3aa,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5739982188229479239, guid: 9ce3c78fc56bd964980e09758f9ee3aa,

@@ -29,7 +29,6 @@ public class EnemyController : MonoBehaviour
 
             if (distance <= agent.stoppingDistance + 3f)
             {
-                Debug.Log("rotate!");
                 //Attack the target
                 FaceTarget();
             }
