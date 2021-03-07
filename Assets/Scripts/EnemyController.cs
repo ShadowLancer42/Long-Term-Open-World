@@ -27,8 +27,9 @@ public class EnemyController : MonoBehaviour
         {
             agent.SetDestination(target.position);
 
-            if (distance <= agent.stoppingDistance)
+            if (distance <= agent.stoppingDistance + 3f)
             {
+                Debug.Log("rotate!");
                 //Attack the target
                 FaceTarget();
             }
