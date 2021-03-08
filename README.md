@@ -12,4 +12,4 @@ If you choose to do either 2 or 3, you need to email me about it before you put 
 
 If you put in a pull request without following the rules, I'm not accepting it.
 
-***Please read the [Project Standards](https://github.com/ShadowLancer42/Long-Term-Open-World/wiki/Project-Standards) Wiki Page before trying to work on the project***
+***Please be sure to skim over the [Project Standards](https://github.com/ShadowLancer42/Long-Term-Open-World/wiki/Project-Standards) Wiki Page before trying to work on the project***
