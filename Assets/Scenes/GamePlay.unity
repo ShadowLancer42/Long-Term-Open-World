@@ -966,12 +966,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerType: 1
-  targetType: 0
+  targetType: 1
   triggerCallFunc: 0
   TriggerObject: {fileID: 0}
   TriggerTag: Player
-  TargetGameObject: {fileID: 0}
-  Function: die
+  TargetGameObject: {fileID: 841607538}
+  Function: AttackPlayer
   RequireButton: 0
   ActivationInput: 
   RepeatForever: 0
