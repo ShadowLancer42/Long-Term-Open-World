@@ -132,7 +132,7 @@ public class ThirdPersonMovement : MonoBehaviour
             if (fallDist > fallDamageThreshold)
             {
                 damage = ((fallDist - fallDamageThreshold) / fallDmgMultiplier) + 1;
-                TakeDamage(Mathf.FloorToInt(damage));
+                takeDamage(Mathf.FloorToInt(damage));
             }
 
         }
@@ -259,11 +259,11 @@ public class ThirdPersonMovement : MonoBehaviour
 
 
 
-    void TakeDamage(int amount, bool fatal = true)
+    void takeDamage(int amount)
     {
         currentHealth -= amount;
         healthDisplay.value = currentHealth;
-        if (fatal && currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             die();
         }

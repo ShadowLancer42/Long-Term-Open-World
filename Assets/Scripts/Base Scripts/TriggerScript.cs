@@ -31,7 +31,7 @@ public class TriggerScript : MonoBehaviour
         OnTriggerStay = 1,
         OnTriggerExit = 2
     }
-    public Call triggerCallFunc = Call.OnTriggerEnter;
+    public Call triggerCallFunc = Call.OnTriggerEnter;  //what call type (OnTriggerEnter/Stay/Exit)
 
     //the 2 trigger type variables
     public GameObject TriggerObject;    //Object entering the collider
@@ -40,7 +40,7 @@ public class TriggerScript : MonoBehaviour
     public GameObject TargetGameObject;         //the relevant TargetGameObject variable
 
     public string Function;             //what function to call when triggered
-
+    
 
     //the variables for whether you need to press a button for the sendMessage function to be called
     public bool RequireButton;      //do u need to press a button
@@ -68,11 +68,11 @@ public class TriggerScript : MonoBehaviour
             //if the target isn't 'self'
             if (doSendMessage)
             {
-                TargetGameObject.BroadcastMessage(Function);
+                TargetGameObject.SendMessage(Function);
             }
             else
             {
-                Invoke(Function, 0f);
+                SendMessage(Function);
             }
             RepeatCount -= 1;
         }

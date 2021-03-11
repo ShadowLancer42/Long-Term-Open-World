@@ -10,15 +10,26 @@ public class EnemyController : MonoBehaviour
 
     public float lookRadius = 10f;
 
+
+
     Transform target;
+    GameObject player;
+
     NavMeshAgent agent;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        target = PlayerManager.instance.player.transform;
+        player = PlayerManager.instance.player;
+        
+        target = player.transform;
+
         agent = GetComponent<NavMeshAgent>();
     }
+
+
+
 
     // Update is called once per frame
     void Update()
@@ -50,9 +61,23 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 
-    void attackPlayer()
+    //Damage func
+    /*
+    private void OnTriggerStay(Collider other)
     {
-        //idk man, just make it call the TakeDamage() func on the ThirdPersonMovement script, im gonna go commit now lol
+        while (other.tag == "player")
+        {
+            StartCoroutine(attackPlayer());
+            player.SendMessage(die);
+        }
+    }
+    */
+
+    IEnumerator attackPlayer()
+    {
+        Debug.Log("yes");
+        yield return new WaitForSeconds(3);
+        Debug.Log("yes 2");
 
     }
 
